@@ -1,13 +1,9 @@
-FROM node:alpine AS builder
+FROM node:alpine
 
-WORKDIR /react_todo_faraby
+WORKDIR /react_todo_app
 
 COPY  . .
 
-RUN rm -rf node_modules && npm install && npm run build
+RUN npm install
 
-FROM nginx:alpine
-
-COPY --from=builder /react_todo_faraby/build /usr/share/nginx/html
-
-COPY ./nginx.conf /etc/nginx
+CMD ["npm", "start"]
