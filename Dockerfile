@@ -9,5 +9,3 @@ RUN rm -rf node_modules && npm install && npm run build
 FROM nginx:alpine
 
 COPY --from=builder /react_todo_faraby/build /usr/share/nginx/html
-
-EXPOSE 5000
