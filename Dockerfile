@@ -1,9 +1,9 @@
 FROM node:alpine
 
-WORKDIR /react_todo_app
+WORKDIR /react_todo_faraby	
 
 COPY  . .
 
-RUN npm install
+RUN rm -rf node_modules && npm install && npm run build
 
-CMD ["npm", "start"]
+CMD ["node", "server.js"]
