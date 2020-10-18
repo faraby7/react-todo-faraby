@@ -1,11 +1,13 @@
-FROM node:alpine
+FROM node:alpine AS builder
 
 WORKDIR /react_todo_app
 
 COPY  . .
 
-RUN npm install
+RUN rm -rf node_modules && npm install && npm run build
 
-EXPOSE 3000
+FROM nginx:alpine
 
-CMD ["npm", "start"]
+COPY --from=builder /app/dist /usr/share/nginx/html
+
+EXPOSE 80
