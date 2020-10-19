@@ -1,14 +1,14 @@
 const express = require("express");
-const routes = require("./routes");
+const path 	  = require('path');
 
 // App
 const app = express();
 
 // Set port
-const port = process.env.PORT || "1337";
+const port = process.env.PORT || "5000";
 app.set("port", port);
 
-app.use('/', routes);
+app.use(express.static(path.join(__dirname, 'build'))); 
 
 // Server
 app.listen(port, () => console.log(`Server running on localhost:${port}`));
