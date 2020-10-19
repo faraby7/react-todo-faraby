@@ -31,7 +31,7 @@ function AddTodo(props) {
       <input
         type="text"
         name="title"
-        placeholder ="Add youssef ..."
+        placeholder ="Add todo ..."
         style={inputStyle}
         value={newTodo.title}
         onChange={onChange}
